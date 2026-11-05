@@ -1,0 +1,451 @@
+{
+  "split": {
+    "train": 633,
+    "val": 159,
+    "test": 199
+  },
+  "jumlah_per_kelas": {
+    "blackspot": 184,
+    "canker": 179,
+    "fresh": 281,
+    "grenning": 347
+  },
+  "cek_bn": {
+    "0.99": {
+      "train_mode_inferensi": 0.42812007665634155,
+      "val": 0.44025155901908875
+    },
+    "0.9": {
+      "train_mode_inferensi": 0.9557662010192871,
+      "val": 0.9622641801834106
+    }
+  },
+  "model_final": "exp3_augmentasi",
+  "eksperimen": [
+    {
+      "nama": "exp1_baseline",
+      "deskripsi": "CNN dasar, Adam lr 1e-3, BN momentum 0.99 (default Keras), tanpa augmentasi",
+      "augmentasi": false,
+      "lr_awal": 0.001,
+      "dropout": 0.5,
+      "bn_momentum": 0.99,
+      "epoch_jalan": 11,
+      "epoch_terbaik": 1,
+      "lr_akhir": 0.0002500000118743628,
+      "train_acc_akhir": 0.9336493015289307,
+      "val_acc": 0.30188679695129395,
+      "val_loss": 1.2267050743103027,
+      "test_acc": 0.3065326633165829,
+      "precision_macro": 0.13574989613626923,
+      "recall_macro": 0.28378378378378377,
+      "f1_macro": 0.18362403100775196,
+      "report": {
+        "blackspot": {
+          "precision": 0.060240963855421686,
+          "recall": 0.13513513513513514,
+          "f1-score": 0.08333333333333333,
+          "support": 37.0
+        },
+        "canker": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 36.0
+        },
+        "fresh": {
+          "precision": 0.4827586206896552,
+          "recall": 1.0,
+          "f1-score": 0.6511627906976745,
+          "support": 56.0
+        },
+        "grenning": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 70.0
+        },
+        "accuracy": 0.3065326633165829,
+        "macro avg": {
+          "precision": 0.13574989613626923,
+          "recall": 0.28378378378378377,
+          "f1-score": 0.18362403100775196,
+          "support": 199.0
+        },
+        "weighted avg": {
+          "precision": 0.14705225337322259,
+          "recall": 0.3065326633165829,
+          "f1-score": 0.19873592770051812,
+          "support": 199.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          5,
+          0,
+          32,
+          0
+        ],
+        [
+          8,
+          0,
+          28,
+          0
+        ],
+        [
+          0,
+          0,
+          56,
+          0
+        ],
+        [
+          70,
+          0,
+          0,
+          0
+        ]
+      ],
+      "waktu_detik": 147.0,
+      "jumlah_parameter": 110948
+    },
+    {
+      "nama": "exp2_bn_momentum",
+      "deskripsi": "BN momentum 0.9, tanpa augmentasi",
+      "augmentasi": false,
+      "lr_awal": 0.001,
+      "dropout": 0.5,
+      "bn_momentum": 0.9,
+      "epoch_jalan": 45,
+      "epoch_terbaik": 35,
+      "lr_akhir": 6.25000029685907e-05,
+      "train_acc_akhir": 0.9684044122695923,
+      "val_acc": 0.9748427867889404,
+      "val_loss": 0.060976698994636536,
+      "test_acc": 0.9698492462311558,
+      "precision_macro": 0.9593984962406015,
+      "recall_macro": 0.9590840840840841,
+      "f1_macro": 0.9588963963963963,
+      "report": {
+        "blackspot": {
+          "precision": 0.9428571428571428,
+          "recall": 0.8918918918918919,
+          "f1-score": 0.9166666666666666,
+          "support": 37.0
+        },
+        "canker": {
+          "precision": 0.8947368421052632,
+          "recall": 0.9444444444444444,
+          "f1-score": 0.918918918918919,
+          "support": 36.0
+        },
+        "fresh": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 56.0
+        },
+        "grenning": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 70.0
+        },
+        "accuracy": 0.9698492462311558,
+        "macro avg": {
+          "precision": 0.9593984962406015,
+          "recall": 0.9590840840840841,
+          "f1-score": 0.9588963963963963,
+          "support": 199.0
+        },
+        "weighted avg": {
+          "precision": 0.97033286734424,
+          "recall": 0.9698492462311558,
+          "f1-score": 0.969837928380642,
+          "support": 199.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          33,
+          4,
+          0,
+          0
+        ],
+        [
+          2,
+          34,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          56,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          70
+        ]
+      ],
+      "waktu_detik": 545.3,
+      "jumlah_parameter": 110948
+    },
+    {
+      "nama": "exp3_augmentasi",
+      "deskripsi": "BN momentum 0.9 + augmentasi data training",
+      "augmentasi": true,
+      "lr_awal": 0.001,
+      "dropout": 0.5,
+      "bn_momentum": 0.9,
+      "epoch_jalan": 52,
+      "epoch_terbaik": 42,
+      "lr_akhir": 3.125000148429535e-05,
+      "train_acc_akhir": 0.9478672742843628,
+      "val_acc": 0.9874213933944702,
+      "val_loss": 0.07125668227672577,
+      "test_acc": 0.949748743718593,
+      "precision_macro": 0.9362519201228878,
+      "recall_macro": 0.932057057057057,
+      "f1_macro": 0.931184012066365,
+      "report": {
+        "blackspot": {
+          "precision": 0.9354838709677419,
+          "recall": 0.7837837837837838,
+          "f1-score": 0.8529411764705882,
+          "support": 37.0
+        },
+        "canker": {
+          "precision": 0.8095238095238095,
+          "recall": 0.9444444444444444,
+          "f1-score": 0.8717948717948718,
+          "support": 36.0
+        },
+        "fresh": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 56.0
+        },
+        "grenning": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 70.0
+        },
+        "accuracy": 0.949748743718593,
+        "macro avg": {
+          "precision": 0.9362519201228878,
+          "recall": 0.932057057057057,
+          "f1-score": 0.931184012066365,
+          "support": 199.0
+        },
+        "weighted avg": {
+          "precision": 0.9535465345158973,
+          "recall": 0.949748743718593,
+          "f1-score": 0.9494645171559154,
+          "support": 199.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          29,
+          8,
+          0,
+          0
+        ],
+        [
+          2,
+          34,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          56,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          70
+        ]
+      ],
+      "waktu_detik": 656.3,
+      "jumlah_parameter": 110948
+    },
+    {
+      "nama": "exp4_lr_3e-4",
+      "deskripsi": "Acuan exp2, learning rate awal 3e-4",
+      "augmentasi": false,
+      "lr_awal": 0.0003,
+      "dropout": 0.5,
+      "bn_momentum": 0.9,
+      "epoch_jalan": 45,
+      "epoch_terbaik": 35,
+      "lr_akhir": 1.8750000890577212e-05,
+      "train_acc_akhir": 0.9620853066444397,
+      "val_acc": 0.9748427867889404,
+      "val_loss": 0.07336194068193436,
+      "test_acc": 0.9597989949748744,
+      "precision_macro": 0.9477896341463414,
+      "recall_macro": 0.9448198198198199,
+      "f1_macro": 0.944947209653092,
+      "report": {
+        "blackspot": {
+          "precision": 0.8536585365853658,
+          "recall": 0.9459459459459459,
+          "f1-score": 0.8974358974358975,
+          "support": 37.0
+        },
+        "canker": {
+          "precision": 0.9375,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.8823529411764706,
+          "support": 36.0
+        },
+        "fresh": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 56.0
+        },
+        "grenning": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 70.0
+        },
+        "accuracy": 0.9597989949748744,
+        "macro avg": {
+          "precision": 0.9477896341463414,
+          "recall": 0.9448198198198199,
+          "f1-score": 0.944947209653092,
+          "support": 199.0
+        },
+        "weighted avg": {
+          "precision": 0.9614842505208973,
+          "recall": 0.9597989949748744,
+          "f1-score": 0.9596474074747797,
+          "support": 199.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          35,
+          2,
+          0,
+          0
+        ],
+        [
+          6,
+          30,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          56,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          70
+        ]
+      ],
+      "waktu_detik": 546.1,
+      "jumlah_parameter": 110948
+    },
+    {
+      "nama": "exp5_dropout_0.3",
+      "deskripsi": "Acuan exp2, dropout 0.3",
+      "augmentasi": false,
+      "lr_awal": 0.001,
+      "dropout": 0.3,
+      "bn_momentum": 0.9,
+      "epoch_jalan": 44,
+      "epoch_terbaik": 34,
+      "lr_akhir": 1.5625000742147677e-05,
+      "train_acc_akhir": 0.9684044122695923,
+      "val_acc": 0.9748427867889404,
+      "val_loss": 0.06538678705692291,
+      "test_acc": 0.9748743718592965,
+      "precision_macro": 0.9658408408408409,
+      "recall_macro": 0.9658408408408409,
+      "f1_macro": 0.9657534246575342,
+      "report": {
+        "blackspot": {
+          "precision": 0.9444444444444444,
+          "recall": 0.918918918918919,
+          "f1-score": 0.9315068493150684,
+          "support": 37.0
+        },
+        "canker": {
+          "precision": 0.918918918918919,
+          "recall": 0.9444444444444444,
+          "f1-score": 0.9315068493150684,
+          "support": 36.0
+        },
+        "fresh": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 56.0
+        },
+        "grenning": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 70.0
+        },
+        "accuracy": 0.9748743718592965,
+        "macro avg": {
+          "precision": 0.9658408408408409,
+          "recall": 0.9658408408408409,
+          "f1-score": 0.9657534246575342,
+          "support": 199.0
+        },
+        "weighted avg": {
+          "precision": 0.9750026408317866,
+          "recall": 0.9748743718592965,
+          "f1-score": 0.9748743718592965,
+          "support": 199.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          34,
+          3,
+          0,
+          0
+        ],
+        [
+          2,
+          34,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          56,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          70
+        ]
+      ],
+      "waktu_detik": 523.9,
+      "jumlah_parameter": 110948
+    }
+  ]
+}

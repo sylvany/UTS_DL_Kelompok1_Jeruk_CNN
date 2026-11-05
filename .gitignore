@@ -1,0 +1,7 @@
+# dataset tidak di-upload (lihat README untuk tautan unduhan)
+dataset/
+venv/
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc

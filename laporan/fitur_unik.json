@@ -1,0 +1,158 @@
+{
+  "ambang_terpilih": 0.8,
+  "tabel_ambang": {
+    "validation": [
+      {
+        "ambang": 0.5,
+        "diterima": 159,
+        "persen_diterima": 100.0,
+        "akurasi_diterima": 98.74213836477988,
+        "salah_total": 2,
+        "salah_ditolak": 0
+      },
+      {
+        "ambang": 0.6,
+        "diterima": 156,
+        "persen_diterima": 98.11320754716981,
+        "akurasi_diterima": 98.71794871794873,
+        "salah_total": 2,
+        "salah_ditolak": 0
+      },
+      {
+        "ambang": 0.7,
+        "diterima": 152,
+        "persen_diterima": 95.59748427672956,
+        "akurasi_diterima": 98.68421052631578,
+        "salah_total": 2,
+        "salah_ditolak": 0
+      },
+      {
+        "ambang": 0.8,
+        "diterima": 145,
+        "persen_diterima": 91.19496855345912,
+        "akurasi_diterima": 99.3103448275862,
+        "salah_total": 2,
+        "salah_ditolak": 1
+      },
+      {
+        "ambang": 0.9,
+        "diterima": 135,
+        "persen_diterima": 84.90566037735849,
+        "akurasi_diterima": 100.0,
+        "salah_total": 2,
+        "salah_ditolak": 2
+      },
+      {
+        "ambang": 0.95,
+        "diterima": 119,
+        "persen_diterima": 74.84276729559748,
+        "akurasi_diterima": 100.0,
+        "salah_total": 2,
+        "salah_ditolak": 2
+      },
+      {
+        "ambang": 0.99,
+        "diterima": 111,
+        "persen_diterima": 69.81132075471699,
+        "akurasi_diterima": 100.0,
+        "salah_total": 2,
+        "salah_ditolak": 2
+      }
+    ],
+    "test": [
+      {
+        "ambang": 0.5,
+        "diterima": 198,
+        "persen_diterima": 99.49748743718592,
+        "akurasi_diterima": 94.94949494949495,
+        "salah_total": 10,
+        "salah_ditolak": 0
+      },
+      {
+        "ambang": 0.6,
+        "diterima": 192,
+        "persen_diterima": 96.48241206030151,
+        "akurasi_diterima": 96.35416666666666,
+        "salah_total": 10,
+        "salah_ditolak": 3
+      },
+      {
+        "ambang": 0.7,
+        "diterima": 184,
+        "persen_diterima": 92.46231155778895,
+        "akurasi_diterima": 97.28260869565217,
+        "salah_total": 10,
+        "salah_ditolak": 5
+      },
+      {
+        "ambang": 0.8,
+        "diterima": 173,
+        "persen_diterima": 86.93467336683418,
+        "akurasi_diterima": 99.42196531791907,
+        "salah_total": 10,
+        "salah_ditolak": 9
+      },
+      {
+        "ambang": 0.9,
+        "diterima": 158,
+        "persen_diterima": 79.39698492462311,
+        "akurasi_diterima": 99.36708860759494,
+        "salah_total": 10,
+        "salah_ditolak": 9
+      },
+      {
+        "ambang": 0.95,
+        "diterima": 139,
+        "persen_diterima": 69.84924623115577,
+        "akurasi_diterima": 100.0,
+        "salah_total": 10,
+        "salah_ditolak": 10
+      },
+      {
+        "ambang": 0.99,
+        "diterima": 126,
+        "persen_diterima": 63.31658291457286,
+        "akurasi_diterima": 100.0,
+        "salah_total": 10,
+        "salah_ditolak": 10
+      }
+    ]
+  },
+  "uji_di_luar_domain": {
+    "foto bukan jeruk": {
+      "jumlah": 16,
+      "diterima": 8,
+      "ditolak": 8,
+      "prediksi_per_kelas": {
+        "blackspot": 2,
+        "canker": 4,
+        "fresh": 6,
+        "grenning": 4
+      },
+      "conf_min": 0.5078246593475342,
+      "conf_median": 0.7832387685775757,
+      "conf_maks": 0.9999998807907104
+    },
+    "derau acak": {
+      "jumlah": 8,
+      "diterima": 0,
+      "ditolak": 8,
+      "prediksi_per_kelas": {
+        "blackspot": 0,
+        "canker": 0,
+        "fresh": 8,
+        "grenning": 0
+      },
+      "conf_min": 0.5786744952201843,
+      "conf_median": 0.7123802900314331,
+      "conf_maks": 0.7371518611907959
+    }
+  },
+  "test_diterima": {
+    "jumlah": 173,
+    "akurasi": 0.9942196531791907,
+    "precision_macro": 0.99,
+    "recall_macro": 0.9903846153846154,
+    "f1_macro": 0.9899959983993597
+  }
+}

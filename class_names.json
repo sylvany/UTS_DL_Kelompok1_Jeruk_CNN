@@ -1,0 +1,13 @@
+{
+  "class_names": [
+    "blackspot",
+    "canker",
+    "fresh",
+    "grenning"
+  ],
+  "img_size": 128,
+  "rescale": "1/255",
+  "color_mode": "RGB",
+  "model_final": "exp3_augmentasi",
+  "confidence_threshold": 0.8
+}
