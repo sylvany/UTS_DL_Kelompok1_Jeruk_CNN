@@ -4,12 +4,14 @@ Proyek UTS Pembelajaran Mendalam, Kelompok 1, Universitas Mikroskil. Citra buah 
 (`blackspot`, `canker`, `fresh`, `grenning`) memakai CNN dasar yang dilatih dari awal (tanpa transfer learning),
 lalu dipakai pada aplikasi web Flask.
 
+**Aplikasi (sudah di-deploy):** https://sylvany.pythonanywhere.com/
+
 **Anggota:** 
-Miranda Nadilla Putri (231112195), 
-Nailah Assyifa (231112334), 
-Rifky Ghifari Siregar (231112918),
-Selamet Riyadi (231112132), 
-Silvani Chayadi (231112945).
+1. Miranda Nadilla Putri (231112195)
+2. Nailah Assyifa (231112334)
+3. Rifky Ghifari Siregar (231112918)
+4. Selamet Riyadi (231112132)
+5. Silvani Chayadi (231112945)
 
 ## Isi repository
 
@@ -20,7 +22,7 @@ Silvani Chayadi (231112945).
 | `model_cnn.keras`, `class_names.json` | Model final dan metadata (urutan kelas, ukuran input, ambang confidence) |
 | `model_cnn.tflite`, `gradcam_bobot.npz` | Salinan ringan model yang sama untuk hosting tanpa TensorFlow (dibuat oleh notebook bagian 8) |
 | `requirements.txt` | Dependensi untuk pelatihan dan menjalankan lokal |
-| `requirements-deploy.txt`, `.python-version` | Dependensi dan versi Python untuk hosting (Render) |
+| `requirements-deploy.txt` | Dependensi ringan untuk hosting (PythonAnywhere), tanpa TensorFlow |
 
 ## Dataset
 
@@ -45,8 +47,9 @@ pip install -r requirements.txt
 ## Training
 
 1. Jalankan `jupyter notebook` dari folder proyek (sejajar dengan `dataset/`), buka `jeruk_cnn_tensorflow.ipynb`, lalu **Run All**.
-   Pelatihan lima eksperimen memakan sekitar 35 sampai 40 menit di CPU (menurut log run kami).
+   Pelatihan lima eksperimen memakan sekitar 40 menit di CPU (jumlah waktu epoch pada log run kami).
 2. Keluaran: `model_cnn.keras`, `class_names.json`, serta gambar dan `hasil_eksperimen.json` di folder `laporan/`.
+   Bagian 8 membuat `model_cnn.tflite` dan `gradcam_bobot.npz` untuk hosting. Salin ketiga berkas model ke folder yang sama dengan `app.py`.
 3. Bagian 7 notebook (Grad-CAM dan confidence threshold) memakai `model_cnn.keras` yang sudah tersimpan, jadi dapat dijalankan
    tanpa melatih ulang: jalankan sel setup sampai pipeline `tf.data`, lalu bagian 7. Bagian ini juga menulis
    `confidence_threshold` ke `class_names.json`.
@@ -80,19 +83,9 @@ confidence di bawah ambang.
 Model final dipilih dari akurasi validation (98,74%), bukan dari data uji. Angka dapat sedikit berbeda bila dijalankan
 di komputer lain. Keterbatasan dataset (latar belakang dan format citra berbeda antarkelas) dibahas di laporan.
 
-## Deployment (Render, tanpa Docker)
+## Deployment (PythonAnywhere)
 
 Di hosting, aplikasi berjalan tanpa TensorFlow: `app.py` otomatis memakai `model_cnn.tflite` (model yang sama, diekspor
 oleh notebook bagian 8) bila TensorFlow tidak terpasang. Di komputer sendiri (ada TensorFlow) aplikasi tetap memakai
-`model_cnn.keras`. Alasannya memori: pada pengujian kami TensorFlow membutuhkan sekitar 785 MB RAM, sedangkan versi TFLite sekitar 196 MB.
-
-1. Pastikan repository GitHub (publik) memuat `app.py`, `model_cnn.tflite`, `gradcam_bobot.npz`, `class_names.json`,
-   `requirements-deploy.txt`, `.python-version`, folder `templates/` dan `static/`.
-2. Daftar di https://render.com (login dengan GitHub), lalu **New > Web Service** dan pilih repository tersebut.
-3. Isi: **Language** Python 3, **Build Command** `pip install -r requirements-deploy.txt`,
-   **Start Command** `gunicorn app:app --workers 1 --threads 2 --timeout 120`, **Instance Type** Free.
-4. Klik **Deploy**. Setelah selesai, aplikasi terbuka di `https://<nama-service>.onrender.com` tanpa login.
-5. Uji dengan mengunggah satu citra tiap kelas, lalu salin tautannya ke laporan (Bagian B).
-
-Layanan gratis tidur setelah 15 menit tidak diakses, jadi akses pertama bisa memakan sekitar satu menit. Buka tautannya
-sebelum demo.
+`model_cnn.keras`. Alasannya: akun gratis hanya punya disk 512 MB, sedangkan TensorFlow terpasang memakan sekitar 1,8 GB.
+Dengan TFLite, dependensi sekitar 330 MB dan RAM aplikasi sekitar 196 MB (hasil pengukuran kami).
